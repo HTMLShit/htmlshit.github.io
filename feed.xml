@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>XITY - Eleventy blog/site starter</title>
+  <title>@htmlshit</title>
   <subtitle></subtitle>
-  <link href="https://xity-starter.netlify.app/feed.xml" rel="self"/>
-  <link href="https://xity-starter.netlify.app/"/>
+  <link href="https://t.me/htmlshit/feed.xml" rel="self"/>
+  <link href="https://t.me/htmlshit/"/>
   <updated>2021-01-19T00:00:00Z</updated>
-  <id>https://xity-starter.netlify.app</id>
+  <id>https://t.me/htmlshit</id>
   <author>
-    <name>Mattia Astorino</name>
+    <name>Sergey Bekharsky</name>
   </author>
   
     
     <entry>
       <title>Styled Components</title>
-      <link href="https://xity-starter.netlify.app/blog/styled-components/"/>
+      <link href="https://t.me/htmlshit/blog/styled-components/"/>
       <updated>2021-01-19T00:00:00Z</updated>
-      <id>https://xity-starter.netlify.app/blog/styled-components/</id>
+      <id>https://t.me/htmlshit/blog/styled-components/</id>
       <content type="html">
         <![CDATA[
       <h2>Пролог</h2>
@@ -107,10 +107,12 @@
 <p>ТИПИЗАЦИЯ</p>
 <h2>Использованные материалы</h2>
 <ul>
-<li>https://medium.com/swlh/creating-react-styled-components-with-dynamic-tags-and-props-ef965c839e64</li>
-<li>https://www.reddit.com/r/reactjs/comments/l4o5k5/the_styledcomponents_happy_path/</li>
-<li>https://www.joshwcomeau.com/css/styled-components/</li>
-<li>https://jsramblings.com/how-to-use-media-queries-with-styled-components/</li>
+<li><a href="https://styled-components.com/">https://styled-components.com/</a></li>
+<li><a href="https://emotion.sh/">https://emotion.sh/</a></li>
+<li><a href="https://medium.com/swlh/creating-react-styled-components-with-dynamic-tags-and-props-ef965c839e64">https://medium.com/swlh/creating-react-styled-components-with-dynamic-tags-and-props-ef965c839e64</a></li>
+<li><a href="https://www.reddit.com/r/reactjs/comments/l4o5k5/the_styledcomponents_happy_path/">https://www.reddit.com/r/reactjs/comments/l4o5k5/the_styledcomponents_happy_path/</a></li>
+<li><a href="https://www.joshwcomeau.com/css/styled-components/">https://www.joshwcomeau.com/css/styled-components/</a></li>
+<li><a href="https://jsramblings.com/how-to-use-media-queries-with-styled-components/">https://jsramblings.com/how-to-use-media-queries-with-styled-components/</a></li>
 </ul>
 
     ]]>
@@ -120,9 +122,9 @@
     
     <entry>
       <title>Солидбук</title>
-      <link href="https://xity-starter.netlify.app/blog/solidbook/"/>
+      <link href="https://t.me/htmlshit/blog/solidbook/"/>
       <updated>2021-01-17T00:00:00Z</updated>
-      <id>https://xity-starter.netlify.app/blog/solidbook/</id>
+      <id>https://t.me/htmlshit/blog/solidbook/</id>
       <content type="html">
         <![CDATA[
       <p>Поскольку на данный момент значимую аудиторию канала составляют студенты курсов, было бы нелишним упомянуть о хороших образовательных проектах. Но тема эта слишком огромная, потому начнём с прямых запросов.</p>
