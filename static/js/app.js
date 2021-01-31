@@ -1,0 +1,1 @@
+import o from"../../_snowpack/pkg/turbolinks.js";o.start();const l=document.documentElement,e=document.getElementById("themeSwitcher"),m=localStorage.getItem("theme")||"auto";e.value=m;const t=a=>{l.dataset.theme=a,localStorage.setItem("theme",a)};e.addEventListener("change",()=>{e.value==="auto"?t("auto"):e.value==="light"?t("light"):e.value==="dark"&&t("dark")});
