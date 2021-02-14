@@ -1,0 +1,1 @@
+:root{--ne-global-background:#fafafa}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ne-global-background:#000;--ne-global-foreground:#8691aa;--ne-code-border:transparent}}:root[data-theme=dark]{--ne-global-background:#000;--ne-global-foreground:#8691aa;--ne-code-border:transparent}

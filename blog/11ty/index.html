@@ -40,12 +40,13 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@1/modern-normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@native-elements/core@1/native-elements.css">
-     
+    
   
     <link rel="preload" as="style" href="/static/css/prism-okaidia.css">
     <link rel="stylesheet" href="/static/css/prism-okaidia.css">
   
 
+    <link rel="stylesheet" href="/static/css/theme.css">
     <link rel="stylesheet" href="/static/css/app.css">
     <script src="https://cdn.jsdelivr.net/npm/what-input@5.2.6/dist/what-input.min.js" defer></script>
     <script type="module" src="/static/js/app.js" defer></script>
@@ -101,7 +102,7 @@
     <h1>&#x41F;&#x435;&#x440;&#x435;&#x435;&#x437;&#x436;&#x430;&#x435;&#x43C; &#x43D;&#x430; 11ty</h1>
 
     
-      <ul style="all: unset; display: inline-flex; list-style: none;">
+      <ul style="all: unset; display: flex; list-style: none; flex-wrap: wrap">
       
         <li style="margin-right: 16px"><a href="/blog/tag/html/">#html</a></li>
       
@@ -144,8 +145,6 @@
 
     <script>
       document.documentElement.dataset.theme = localStorage.getItem('theme') || 'auto';
-
-      
     </script>
   
 
