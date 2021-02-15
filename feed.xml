@@ -57,24 +57,32 @@
 <h3>Погоди, а с CSS-то что не так?</h3>
 <p>Ну вообще-то, много чего:</p>
 <ul>
-<li>Всё написанное вами попадает в глобальную область видимости</li>
-<li>Управление зависимостями напоминает ад</li>
-<li>Отследить неиспользуемый код очень сложно</li>
-<li>Код может стать довольно объёмным. Минификация решает лишь часть проблем (названия классов-то куда девать?)</li>
-<li>Ещё не так давно не было стандартного способа задавать константы</li>
-<li>«Жадность» определений: нам не нужны скруглённые углы и тень в похожей кнопке? придётся их индивидуально сбрасывать</li>
-<li>Возможности управления состоянием стилей из скриптов весьма ограничены: до недавнего времени лучшее, что можно было сделать, это переключить классы</li>
-<li>Ваш прекрасный набор классов для оформления запросто ломает чудак, вооружённый * и &gt;</li>
+<li>Всё написанное вами попадает в глобальную область видимости<br>
+<small>Впрочем, это решается CSS-модулями или строгими соглашениями об именовании (кто сказал БЭМ?)</small></li>
+<li>Управление зависимостями напоминает ад<br>
+<small>Может быть решено препроцессорами, а в совокупности с модулями npm - становится достаточно похоже на то, что имеем в JS</small></li>
+<li>Отследить неиспользуемый код очень сложно<br>
+<small>Существуют инструменты вроде <a href="https://github.com/FullHuman/purgecss" target="_blank">PurgeCSS</a> и <a href="https://github.com/leeoniya/dropcss" target="_blank">DropCSS</a>, их настройка может быть непростой, но часть головной боли снимут, рекомендую ознакомиться</small></li>
+<li>Код может стать довольно объёмным<br>
+<small>Минификация и удаление неиспользуемого кода решают лишь часть проблем, в идеале решение должно быть комплексным и закрывать вопросы с длиной HTML-классов</small></li>
+<li>Ещё не так давно не было стандартного способа задавать константы<br>
+<small>Препроцессоры и пользовательские свойства FTW</small></li>
+<li>«Жадность» определений<br>
+<small>Стоит быть очень аккуратным при составлении API ваших компонентов и идти от простого к сложному, заранее продумывая все возможные состояния и варианты использования.</small></li>
+<li>Возможности управления состоянием стилей из скриптов весьма ограничены и весьма сложны
+<small>С приходом пользовательских свойств всё стало гораздо лучше</small></li>
+<li>Ваш прекрасный набор классов для оформления запросто ломает некто, вооружённый * и &gt;
+<small>Опять же, возвращаемся к проблеме глобальной области видимости. Всё, что туда попало и заранее известно – может быть переопределено</small></li>
 </ul>
 <p><img src="/images/awesome.png" alt="CSS is awesome" title="CSS is awesome"></p>
-<p>Да, частично это решают препроцессоры. Частично - css-модули. Но хочется чего-то более универсального. И тут...</p>
+<p>В сухом остатке, никто не мешает так продумать устройство ваших компонентов, чтобы не столкнуться с вышеописанными проблемами, но если половина из них может быть решена на корню иными инструментами – почему бы не попробовать? Встречайте...</p>
 <h2>CSS в JS</h2>
 <h3>Do it with style</h3>
 <p>Мы и раньше могли обращаться к стилям DOM-узлов через свойство style, считывая и устанавливая значение свойства style связанного с узлом элемента:</p>
 <pre class="language-javascript"><code class="language-javascript">el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">'white'</span><span class="token punctuation">;</span><br>el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token string">'cyan'</span><span class="token punctuation">;</span></code></pre>
 <p>В итоге мы получаем генерированный атрибут style, который ещё называют <strong>инлайновыми</strong> стилями:</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">background-color</span><span class="token punctuation">:</span> cyan</span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><br>  Hello Styles!<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<p>Минусы? Никаких вам псевдоклассов, никаких вам псевдоэлементов, никакой развитой анимации. Об отсутствии централизованного управления внешним видом множества элементов единовременно и объединения стилей (кажется, это худшая в мире ода CSS-классам) можно забыть. И об автоматических браузерных префиксах тоже. Плюсы? Это бронебойно и точно работает (пока кто-нибудь !important не наставил).</p>
+<p>Минусы? Никаких вам псевдоклассов, никаких вам псевдоэлементов, никакой развитой анимации. Об отсутствии централизованного управления внешним видом множества элементов единовременно и объединения стилей (кажется, это худшая в мире ода CSS-классам) можно забыть. И об автоматических браузерных префиксах тоже. И о кешировании, естественно. Плюсы? Это бронебойно и точно работает (пока кто-нибудь !important не наставил).</p>
 <h3>Красивее как-то можно?</h3>
 <p>В JSX – можно:</p>
 <pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> divStyle <span class="token operator">=</span> <span class="token punctuation">{</span><br>  color<span class="token operator">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span><br>  backgroundColor<span class="token operator">:</span> <span class="token string">'cyan'</span><span class="token punctuation">,</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">HelloStylesComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>divStyle<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">Hello React Styles!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
@@ -86,27 +94,33 @@
 <ul>
 <li>Соблюдается принцип единой ответственности: компонент полностью отвечает за свой внешний вид и поведение</li>
 <li>Самоудаление «мёртвого» (неиспользуемого) кода</li>
-<li>Динамические возможности ограничены лишь вашими умениями</li>
-<li>Никаких проблем с именованием классов (вы же уже подумали об имени компонента, наверное)</li>
-<li>Изоляция стилей</li>
+<li>Динамические возможности ограничены лишь вашей готовностью их контролировать</li>
+<li>Никаких проблем с именованием классов</li>
 <li>Контроль состояния в любой момент</li>
+<li>Изоляция стилей</li>
 </ul>
 <p>Минусы:</p>
 <ul>
-<li>Требуется некоторое время на привыкание (например, к синтаксису)</li>
+<li>Производительность ниже, чем у классического подхода<br>
+<small>Верно не всегда, библиотеки вроде <a href="https://linaria.dev/" target="_blank">linaria</a> генерируют отдельный CSS-файл, контролируемый пользовательскими свойствами, рассмотрим позже</small></li>
+<li>Требуется некоторое время на привыкание\
+<small>Первое что приходит в голову – синтаксис, второе – сам подход</small></li>
 <li>Лучшие возможности требуют дополнительной настройки сборки</li>
-<li>Сложности с поддержкой редакторами кода (верно не всегда)</li>
-<li>Стили не применятся, пока не выполнится JS (верно не всегда)</li>
-<li>Производительность ниже, чем у классического подхода (верно не всегда)</li>
-<li>Очевидно, стили кешироваться отдельно от скриптов не станут (верно не всегда)</li>
+<li>Сложности с поддержкой редакторами кода<br>
+<small>Верно не всегда</small></li>
+<li>Стили не применятся, пока не выполнится JS<br>
+<small>Верно не всегда, см. первый пункт</small></li>
+<li>Очевидно, стили кешироваться отдельно от скриптов не смогут<br>
+<small>Верно не всегда, см. первый пункт</small></li>
 </ul>
-<p>Кстати, в CJS возможна <strong>атомизация</strong> классов, что позволяет сжать ваш код до предела. Представьте себе, что все написанные вами правила сгруппируются и выстроятся в ровную композицию автоматически. Без <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a> и прочих подходов из нулевых (вы правда думали, что Tailwind первый такой?). Отлаживать это, конечно, будет непросто, зато размер сборки минимальный и скорость максимальна.</p>
+<p>Кстати, в CJS возможна автоматическая <strong>атомизация</strong> классов, что позволяет сжать ваш код до предела. Представьте себе, что все написанные вами правила сгруппируются и выстроятся в ровную композицию. Без <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a> и прочих подходов из нулевых (вы правда думали, что Tailwind первый такой?). Отлаживать это, конечно, будет непросто, зато размер сборки минимальный и скорость максимальна. Если интересен результат такого подхода – взгляните на недавний редизайн Facebook.</p>
 <p>Давайте пройдёмся по примерам из нескольких популярных библиотек.</p>
 <h2>Что в наличии?</h2>
 <h3>JSS</h3>
 <p>Само понятие CSS-in-JS узурпировал (создал?) <a href="https://cssinjs.org/" target="_blank">JSS</a>. Первый известный релиз на GitHub датируется 2014 годом сразу с версии 0.2.1, можно предположить, что сама идея зародилась и раньше. Если вы хоть раз использовали <a href="https://material-ui.com/" target="_blank">Material UI</a>, вы использовали и JSS. Наверняка не все пытались переопределить встроенные стили их компонентов (если интересно, как-нибудь расскажу), потому давайте взглянем на пример, взят из документации с упрощениями:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> jss <span class="token keyword">from</span> <span class="token string">'jss'</span><span class="token punctuation">;</span><br><span class="token keyword">import</span> color <span class="token keyword">from</span> <span class="token string">'color'</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> styles <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'@global'</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    body<span class="token operator">:</span> <span class="token punctuation">{</span><br>      color<span class="token operator">:</span> <span class="token string">'green'</span><span class="token punctuation">,</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  button<span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token string">'&amp;:hover'</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      background<span class="token operator">:</span> <span class="token string">'blue'</span><span class="token punctuation">,</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  ctaButton<span class="token operator">:</span> <span class="token punctuation">{</span><br>    extend<span class="token operator">:</span> <span class="token string">'button'</span><span class="token punctuation">,</span><br>    <span class="token string">'&amp;:hover'</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      background<span class="token operator">:</span> <span class="token function">color</span><span class="token punctuation">(</span><span class="token string">'blue'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">darken</span><span class="token punctuation">(</span><span class="token number">0.3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">hex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token string">'@media (min-width: 1024px)'</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    button<span class="token operator">:</span> <span class="token punctuation">{</span><br>      width<span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token keyword">const</span> <span class="token punctuation">{</span> classes <span class="token punctuation">}</span> <span class="token operator">=</span> jss<span class="token punctuation">.</span><span class="token function">createStyleSheet</span><span class="token punctuation">(</span>styles<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attach</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  &lt;button class="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>classes<span class="token punctuation">.</span>button<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">">Button&lt;/button><br>  &lt;button class="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>classes<span class="token punctuation">.</span>ctaButton<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">">CTA Button&lt;/button><br></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></code></pre>
-<p>Обратили внимание? Тут React отсутствует, подход применим к любой реализации. Ещё мне нравится логотип JSS, он максимально издевательский:</p>
+<p>Обратили внимание? Тут React <strong>отсутствует</strong>, подход применим к любой реализации. Библиотек CSS-in-JS, не завязанных на React, гораздо больше одной, но, как уже было упомянуто, React и JSX в данном цикле статей применены лишь для собственного удобства автора.</p>
+<p>Ещё мне нравится логотип JSS, он максимально издевательский:</p>
 <p><img src="/images/jss.png" alt="JSS Logo" title="JSS is Awesome"></p>
 <p>Библиотека до сих пор развивается, существует огромное количество плагинов, можно даже, используя <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/template_strings#%D1%82%D0%B5%D0%B3%D0%BE%D0%B2%D1%8B%D0%B5_%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D1%8B" target="_blank">теговые шаблоны</a> писать обычный CSS. А можно, используя <code>jss-nested</code>, обращаться к вложенным компонентам. Но вообще...</p>
 <p>Это всё больше похоже на какую-то дикую смесь, чем на CSS. Тут вам на одном уровне даются простые свойства объекта, которые можно переиспользовать и расширять, псевдоклассы/элементы, at-правила, селекторы... Честно говоря, выглядит это всё довольно жутковато. Но многим понравилось (многие JS-программисты в CSS не умеют, простите мне эту вольность), а недостатки и условная сложность JSS открыли дорогу иным решениям. Кстати, всё в том же Material UI <a href="https://github.com/mui-org/material-ui/issues/20012" target="_blank">рассматривают</a> возможность замены JSS на Styled Components.</p>
