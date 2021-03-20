@@ -1,0 +1,43 @@
+{% extends 'layouts/base.njk' %}
+{% from "../post-navigation.njk" import postNavigation %}
+
+{# Populate <head> with post-related assets #}
+{% block head %}
+  {% if config.syntaxTheme %}
+    <link rel="preload" as="style" href="/static/css/{{ config.syntaxTheme }}"/>
+    <link rel="stylesheet" href="/static/css/{{ config.syntaxTheme }}"/>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <main tabindex="-1">
+    {% include "header.njk" %}
+
+    {% if date %}
+      <small><time datetime="{{ date | htmlDate }}">{{ date | dateFilter }}</time></small>
+    {% endif %}
+
+    <h1>{{ title }}</h1>
+
+    <article ne-prose>
+      {{ content | safe }}
+    </article>
+
+    {% if tags.length %}
+      <ul style="all: unset; display: flex; list-style: none; flex-wrap: wrap">
+      {% for tag in tags %}
+        <li style="margin-right: 16px"><a href="/blog/tag/{{tag}}/">#{{tag}}</a></li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+
+    <hr />
+
+    {% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+    {% set nextPost = collections.posts | getNextCollectionItem(page) %}
+    {{ postNavigation(previousPost, nextPost) }}
+
+    {% include "footer.njk" %}
+  </main>
+{% endblock %}
+
