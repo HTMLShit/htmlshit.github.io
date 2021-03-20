@@ -109,6 +109,17 @@
 
     <h1>A post with embeds and images</h1>
 
+    <article ne-prose>
+      <p>This post contains <code>iframe</code> embedded elements, wrapped inside of a CSS class. That allows you to add custom styles to match the visual look of embeds better for your needs. You can customize the CSS class name by adjusting <code>iframesClass</code> from the main <code>config.json</code> file. Here is an example of a CodePen embed.</p>
+<div class="iframes-wrapper"><iframe height="500" style="width: 100%;" scrolling="no" title="Border Radius Morphing" src="https://codepen.io/equinusocio/embed/jezBdZ?height=300&amp;theme-id=10535&amp;default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true" loading="lazy"></iframe></div>
+<h2 id="images-and-pictures">Images and pictures<a class="permalink" href="#images-and-pictures">#</a></h2>
+<p>This starter uses a custom transformer to parse <code>markdown</code> content and improve it. An example of this are the images. If you add an image with title to your markdown, it will be replaced with a <code>&lt;picture&gt;</code> element, and the title is placed as <code>&lt;figcaption&gt;</code> in order to keep a basic semantic structure.</p>
+<p><strong>The following image code is:</strong></p>
+<p><code>![Alt](https://bit.ly/3aJXGqo &apos;Photo by Mattia Astorino&apos;)</code></p>
+<p></p><figure class="figure"><img src="https://bit.ly/3aJXGqo" alt="Alt" loading="lazy"><figcaption><small>Photo by Mattia Astorino</small></figcaption></figure><p></p>
+
+    </article>
+
     
       <ul style="all: unset; display: flex; list-style: none; flex-wrap: wrap">
       
@@ -125,19 +136,6 @@
 
     <hr>
 
-    <article ne-prose>
-      <p>This post contains <code>iframe</code> embedded elements, wrapped inside of a CSS class. That allows you to add custom styles to match the visual look of embeds better for your needs. You can customize the CSS class name by adjusting <code>iframesClass</code> from the main <code>config.json</code> file. Here is an example of a CodePen embed.</p>
-<div class="iframes-wrapper"><iframe height="500" style="width: 100%;" scrolling="no" title="Border Radius Morphing" src="https://codepen.io/equinusocio/embed/jezBdZ?height=300&amp;theme-id=10535&amp;default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true" loading="lazy"></iframe></div>
-<h2 id="images-and-pictures">Images and pictures<a class="permalink" href="#images-and-pictures">#</a></h2>
-<p>This starter uses a custom transformer to parse <code>markdown</code> content and improve it. An example of this are the images. If you add an image with title to your markdown, it will be replaced with a <code>&lt;picture&gt;</code> element, and the title is placed as <code>&lt;figcaption&gt;</code> in order to keep a basic semantic structure.</p>
-<p><strong>The following image code is:</strong></p>
-<p><code>![Alt](https://bit.ly/3aJXGqo &apos;Photo by Mattia Astorino&apos;)</code></p>
-<p></p><figure class="figure"><img src="https://bit.ly/3aJXGqo" alt="Alt" loading="lazy"><figcaption><small>Photo by Mattia Astorino</small></figcaption></figure><p></p>
-
-    </article>
-
-    <hr>
-
     
     
     
@@ -145,6 +143,7 @@
     
     
   </nav>
+
 
     <footer>
     <a target="_blank" href="https://t.me/htmlshit" rel="noopener noreferrer">&#x41A;&#x430;&#x43D;&#x430;&#x43B;</a>
