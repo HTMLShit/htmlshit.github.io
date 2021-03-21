@@ -236,13 +236,13 @@
 <p>Выглядит весьма похоже. Используя свежие фишки JavaScript под названием <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/template_strings">шаблонные строки</a> и <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/template_strings#%D1%82%D0%B5%D0%B3%D0%BE%D0%B2%D1%8B%D0%B5_%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D1%8B">теговые шаблоны</a> Styled Components буквально позволяет писать привычный CSS прямо в JS-модулях и таким образом теперь ваш компонент целиком и полностью отвечает не только за свою структуру и визуальную логику, но и за внешнее оформление тоже.</p>
 <p>И привычный и такой любимый родительский селектор (&amp;, амперсанд) имеется.</p>
 <h3>Песочница</h3>
-<p>Установка и настройка Styled Components будет описана в следующей статье цикла, поскольку нюансов и фишек слишком много. Здесь я познакомлю вас с синтаксисом и основными приёмами работы. Чтобы было проще стартовать, я подготовил песочницу на <a href="https://codesandbox.io/s/competent-noether-21coi?file=/src/App.js">CodeSandbox</a>, в рамках которой можно просто запускать код из статьи. Да, я ленивый: остальные примеры будут даны просто текстом.</p>
-<iframe src="https://codesandbox.io/embed/competent-noether-21coi?fontsize=14&hidenavigation=1&moduleview=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="competent-noether-21coi"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<p>Установка и настройка Styled Components будет описана в следующей статье цикла, поскольку нюансов и фишек слишком много. Здесь я познакомлю вас с синтаксисом и основными приёмами работы. Чтобы было проще стартовать, я подготовил песочницу на <a href="https://codepen.io/alinaki/pen/wvoVVBg">CodePen</a>, в рамках которой можно просто запускать код из статьи. Да, я ленивый: остальные примеры будут даны просто текстом.</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="alinaki" data-slug-hash="wvoVVBg" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Styled Components demo">
+  <span>See the Pen <a href="https://codepen.io/alinaki/pen/wvoVVBg">
+  Styled Components demo</a> by Alinaki (<a href="https://codepen.io/alinaki">@alinaki</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 <h3>Прокидываем props'ы</h3>
 <p>Продолжаем.</p>
 <p>Одного только исчезновения <code>className</code> явно недостаточно чтобы набрать новых сторонников. Усложняем:</p>
@@ -287,13 +287,13 @@
 <p>И вот теперь обратите внимание. Помните я сказал, что Styled Components из коробки не умеет объединять ваши CSS-правила? Так вот в данном примере вы, фактически, объединили их сами. Как и в классическом подходе:</p>
 <p><img src="/images/classes.png" alt="Генерация классов" title="Генерация классов"></p>
 <h3>Магия</h3>
-<p>Напоследок немного обещанной магии. Возьмём популярный фреймворк <a href="https://material-ui.com/">Material UI</a> и <a href="https://codesandbox.io/s/broken-wave-24je9">обратим его на свою сторону</a>. Компоненты MUI принимают классы? Значит, принимают и правила SC.</p>
-<iframe src="https://codesandbox.io/embed/broken-wave-24je9?fontsize=14&hidenavigation=1&moduleview=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="broken-wave-24je9"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<p>Напоследок немного обещанной магии. Возьмём популярный фреймворк <a href="https://material-ui.com/">Material UI</a> и <a href="https://codepen.io/alinaki/pen/xxRvvZe">обратим его на свою сторону</a>. Компоненты MUI принимают классы? Значит, принимают и правила SC.</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="alinaki" data-slug-hash="xxRvvZe" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Styled Components MUI Demo">
+  <span>See the Pen <a href="https://codepen.io/alinaki/pen/xxRvvZe">
+  Styled Components MUI Demo</a> by Alinaki (<a href="https://codepen.io/alinaki">@alinaki</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 <p>Есть только одна хитрая проблема. Вы же не забыли, что правила CSS применяются по-порядку? Нам нужно быть уверенными, что стили SC загрузятся <strong>после</strong> стилей JSS (который применяется в MUI по-умолчанию). Вот для этого и нужен провайдер контекста стилей <code>StylesProvider</code>. Он гарантирует, что правила JSS будут загружены первыми. А SC, соответственно, уже после них. Ну ещё есть хак с &amp;&amp;. Догадайтесь уже сами, что он сделает.</p>
 <h2>Полезно и познавательно</h2>
 <p>На этом наш краткий экскурс в Styled Components закончен. В следующих статьях я разберу установку, работу с анимациями, темами и Typescript. А пока рекомендую ознакомиться со следующими ресурсами:</p>
