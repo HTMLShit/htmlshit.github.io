@@ -1,0 +1,7 @@
+{
+  "name": "windows",
+  "packageManager": "yarn@4.0.0-rc.51",
+  "dependencies": {
+    "vite": "^5.0.2"
+  }
+}
