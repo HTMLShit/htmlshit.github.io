@@ -24,13 +24,34 @@
 
 <body>
     <div id="root"></div>
+    <script type="module" src="https://esm.sh/run"></script>
 
-    <script type="module">
-        import { esm } from "https://esm.sh/build";
+    <script type="text/babel">
+        import React from "https://esm.sh/react@18.2.0";
+        import { createRoot } from "https://esm.sh/react-dom@18.2.0/client";
+        import confetti from "https://esm.sh/canvas-confetti@1.6.0";
 
-        const { render } = await esm`import "https://htmlshit.github.io/esm.js"`;
+        const App = () => {
+            function onMouseMove(e) {
+                confetti({
+                    particleCount: 5,
+                    origin: {
+                        x: e.pageX / window.innerWidth,
+                        y: (e.pageY + 20) / window.innerHeight,
+                    },
+                });
+            }
 
-        render();
+            return (
+                <div onMouseMove={onMouseMove}>
+                    <h1>Hello React!⚛️</h1>
+                    <p>Building user interfaces.</p>
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById("root"));
+        root.render(<App />);
     </script>
 </body>
 
